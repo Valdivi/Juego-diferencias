@@ -36,23 +36,8 @@
   .zona.encontrada { border:3px solid #00e676 !important; pointer-events:none; animation:pulso-ok .4s ease; }
   .zona.encontrada::after { content:'✓'; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:28px; color:#00e676; filter:drop-shadow(0 2px 4px rgba(0,0,0,.7)); z-index:5; }
   .error-ripple { position:absolute; width:56px; height:56px; border-radius:50%; background:rgba(197,14,42,.45); transform:translate(-50%,-50%) scale(0); animation:ripple .5s ease-out forwards; pointer-events:none; z-index:6; }
-  .footer {
-    width:100%; display:flex; justify-content:center; align-items:center;
-    padding:80px 0 100px; margin-top:40px;
-    position:relative;
-    background: linear-gradient(to bottom, #e8e8e8 0%, #ffffff 100%);
-  }
-  .footer img { height:160px; position:relative; z-index:2; }
-  .footer::before {
-    content:'';
-    position:absolute;
-    top:-2px; left:-5%; right:-5%;
-    height:90px;
-    background:transparent;
-    border-top: 4px solid var(--rojo);
-    border-radius: 50% 50% 0 0 / 90px 90px 0 0;
-    z-index:1;
-  }
+  .footer { width:100%; display:flex; justify-content:center; padding:80px 0 100px; margin-top:40px; }
+  .footer img { height:160px; }
   .overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,.78); z-index:200; align-items:center; justify-content:center; }
   .overlay.visible { display:flex; }
   .modal { background:var(--blanco); border-radius:28px; padding:64px 80px; text-align:center; max-width:740px; width:90%; }
@@ -71,176 +56,37 @@
   @keyframes caer { to{top:110vh;transform:rotate(720deg)} }
   @keyframes latido { 0%,100%{transform:scale(1)} 50%{transform:scale(1.18)} }
 
-  /* ══════════════════════════════════
-     TÓTEM / DESKTOP ANCHO (≥1080px)
-     Layout actual — sin cambios
-  ══════════════════════════════════ */
-
-  /* ══════════════════════════════════
-     COMPUTADORA (768px – 1079px)
-     Dos columnas: izq=info, der=juego
-  ══════════════════════════════════ */
-  @media (min-width:768px) and (max-width:1079px) {
-    body { width:100%; flex-direction:row; flex-wrap:wrap; align-items:flex-start; }
-
-    /* Columna izquierda: título + stats + logo */
-    .col-info {
-      width:280px; min-height:100vh;
-      background:var(--blanco);
-      display:flex; flex-direction:column;
-      align-items:center; justify-content:center;
-      padding:32px 20px;
-      gap:32px;
-      position:sticky; top:0;
-      box-shadow:4px 0 20px rgba(0,0,0,.08);
-      z-index:10;
-    }
-    .col-juego {
-      flex:1; overflow-y:auto;
-      padding:24px 16px;
-      display:flex; flex-direction:column;
-      align-items:center;
-    }
-
-    /* Ocultar header y barra originales en tablet/desktop */
-    .header { display:none; }
-    .barra-wrap { display:none; }
-    .footer { display:none; }
-
-    /* Título dentro de col-info — OCULTO, no duplicar */
-    .col-info .titulo { display:none; }
-
-    /* Stats verticales */
-    .col-info .stat-block { display:flex; flex-direction:column; align-items:center; gap:4px; }
-    .col-info .stat-label-dark { font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:2px; color:#999; }
-    .col-info .stat-valor-dark { font-size:48px; font-weight:900; color:var(--negro); line-height:1; }
-    .col-info .stat-valor-dark span { color:var(--rojo); }
-
-    /* Cronómetro */
-    .col-info .cron-wrap { display:flex; flex-direction:column; align-items:center; gap:4px; }
-    .col-info .cron-circle { width:100px; height:100px; border-radius:50%; border:5px solid var(--negro); display:flex; flex-direction:column; align-items:center; justify-content:center; box-shadow:0 4px 16px rgba(0,0,0,.15); }
-    .col-info .cron-num { font-size:40px; font-weight:900; color:var(--negro); line-height:1; }
-    .col-info .cron-num.urgente { color:var(--rojo); animation:latido .5s ease infinite; }
-    .col-info .cron-lbl { font-size:11px; font-weight:700; color:#999; text-transform:uppercase; }
-
-    /* Vidas */
-    .col-info .vidas-wrap { display:flex; flex-direction:column; align-items:center; gap:6px; }
-    .col-info .corazones { display:flex; gap:6px; }
-    .col-info .corazones span { font-size:32px; }
-
-    /* Logo */
-    .col-info .logo-col { width:140px; }
-
-    /* Juego: escalar los paneles para que quepan */
-    .juego-contenedor { padding:0; width:100%; }
-    .juego-inner { flex-direction:column; gap:16px; }
-    .panel { width:100%; height:auto; aspect-ratio:490/945; }
-    .panel img.fondo { object-fit:cover; }
-
-    /* Zonas escalan con el panel */
-    .zona { transform-origin:top left; }
-  }
-
-  /* ══════════════════════════════════
-     TABLET (600px – 767px)
-     Igual que computadora pero más compacto
-  ══════════════════════════════════ */
-  @media (min-width:600px) and (max-width:767px) {
-    body { width:100%; flex-direction:row; flex-wrap:wrap; align-items:flex-start; }
-    .header { display:none; }
-    .barra-wrap { display:none; }
-    .footer { display:none; }
-    .col-info { width:220px; min-height:100vh; background:var(--blanco); display:flex; flex-direction:column; align-items:center; justify-content:center; padding:24px 12px; gap:24px; position:sticky; top:0; box-shadow:4px 0 20px rgba(0,0,0,.08); z-index:10; }
-    .col-juego { flex:1; overflow-y:auto; padding:16px 8px; display:flex; flex-direction:column; align-items:center; }
-    .col-info .titulo { display:none; }
-    .col-info .stat-block { display:flex; flex-direction:column; align-items:center; gap:2px; }
-    .col-info .stat-label-dark { font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:2px; color:#999; }
-    .col-info .stat-valor-dark { font-size:36px; font-weight:900; color:var(--negro); line-height:1; }
-    .col-info .stat-valor-dark span { color:var(--rojo); }
-    .col-info .cron-wrap { display:flex; flex-direction:column; align-items:center; gap:4px; }
-    .col-info .cron-circle { width:80px; height:80px; border-radius:50%; border:4px solid var(--negro); display:flex; flex-direction:column; align-items:center; justify-content:center; }
-    .col-info .cron-num { font-size:32px; font-weight:900; color:var(--negro); line-height:1; }
-    .col-info .cron-num.urgente { color:var(--rojo); animation:latido .5s ease infinite; }
-    .col-info .cron-lbl { font-size:10px; font-weight:700; color:#999; text-transform:uppercase; }
-    .col-info .vidas-wrap { display:flex; flex-direction:column; align-items:center; gap:4px; }
-    .col-info .corazones { display:flex; gap:4px; }
-    .col-info .corazones span { font-size:26px; }
-    .col-info .logo-col { width:110px; }
-    .juego-contenedor { padding:0; width:100%; }
-    .juego-inner { flex-direction:column; gap:12px; }
-    .panel { width:100%; height:auto; aspect-ratio:490/945; }
-  }
-
-  /* ══════════════════════════════════
-     MÓVIL (≤599px) — todo en columna,
-     escala para entrar en pantalla
-  ══════════════════════════════════ */
-  @media (max-width:599px) {
+  /* ── MÓVIL Y TABLET (≤1079px) ── */
+  @media (max-width:1079px) {
     body { width:100%; }
-
-    /* Ocultar col-info si existe */
-    .col-info { display:none !important; }
-    .col-juego { width:100%; padding:0; }
-
-    /* Header compacto */
-    .header { padding:16px 16px 8px; }
-    .titulo { font-size:28px; }
-
-    /* Barra compacta */
-    .barra { height:70px; padding:0 16px; }
-    .cronometro { width:80px; height:80px; }
-    .cronometro-num { font-size:32px; }
-    .cronometro-label { font-size:10px; }
-    .cronometro-wrap { top:-20px; }
-    .stat-label { font-size:11px; letter-spacing:1px; }
-    .stat-valor { font-size:32px; }
-    .corazon { font-size:28px; }
-
-    /* Juego: dos paneles en columna, cada uno ocupa el ancho */
+    .header { padding:20px 16px 12px; }
+    .titulo { font-size:clamp(28px, 6vw, 56px); }
+    .barra { height:clamp(60px, 10vw, 100px); padding:0 16px; }
+    .barra-wrap { margin-top:8px; }
+    .cronometro { width:clamp(70px, 13vw, 128px); height:clamp(70px, 13vw, 128px); }
+    .cronometro-num { font-size:clamp(28px, 6vw, 50px); }
+    .cronometro-label { font-size:clamp(10px, 2vw, 14px); }
+    .cronometro-wrap { top:clamp(-22px, -3.5vw, -32px); }
+    .stat-label { font-size:clamp(10px, 2vw, 16px); letter-spacing:1px; }
+    .stat-valor { font-size:clamp(28px, 6vw, 52px); }
+    .corazon { font-size:clamp(24px, 5vw, 44px); }
     .juego-contenedor { padding:16px 8px 0; }
-    .juego-inner { flex-direction:column; gap:12px; padding:6px; }
+    .juego-inner { flex-direction:column; gap:12px; padding:6px; width:100%; }
     .panel { width:100%; height:auto; aspect-ratio:490/945; }
-
-    /* Footer compacto */
     .footer { padding:40px 0 50px; margin-top:20px; }
-    .footer img { height:80px; }
+    .footer img { height:clamp(60px, 12vw, 120px); }
     .footer::before { height:50px; border-radius:50% 50% 0 0 / 50px 50px 0 0; }
-
-    /* Modal compacto */
-    .modal { padding:32px 24px; }
-    .modal-titulo { font-size:36px; }
-    .modal-sub { font-size:18px; }
-    .btn-jugar { padding:16px 40px; font-size:20px; }
-    .modal-logo { height:48px; }
+    .modal { padding:32px 24px; max-width:90vw; }
+    .modal-titulo { font-size:clamp(28px, 7vw, 60px); }
+    .modal-sub { font-size:clamp(16px, 4vw, 28px); }
+    .btn-jugar { padding:16px 40px; font-size:clamp(18px, 4vw, 28px); }
+    .modal-emoji { font-size:clamp(60px, 14vw, 96px); }
+    .modal-logo { height:clamp(40px, 9vw, 72px); }
   }
 </style>
 </head>
 <body>
-<div class="col-info">
-  <div class="titulo">Encuentra las<br><span>9 Diferencias</span></div>
-  <div class="stat-block">
-    <div class="stat-label-dark">Encontradas</div>
-    <div class="stat-valor-dark" id="contadorNum2">0<span>/9</span></div>
-  </div>
-  <div class="cron-wrap">
-    <div class="stat-label-dark">Tiempo</div>
-    <div class="cron-circle">
-      <div class="cron-num" id="cronNum2">15</div>
-      <div class="cron-lbl">seg</div>
-    </div>
-  </div>
-  <div class="vidas-wrap">
-    <div class="stat-label-dark">Vidas</div>
-    <div class="corazones">
-      <span id="vida1b">❤️</span>
-      <span id="vida2b">❤️</span>
-      <span id="vida3b">❤️</span>
-    </div>
-  </div>
-  <img class="logo-col" src="logo.png" alt="Skretting">
-</div>
-
-<div class="col-juego">
+<div class="header">
   <div class="titulo">Encuentra las<br><span>9 Diferencias</span></div>
 </div>
 <div class="barra-wrap">
@@ -285,7 +131,6 @@
   </div>
 </div>
 <div class="footer"><img src="logo.png" alt="Skretting"></div>
-</div><!-- /col-juego -->
 <div class="overlay" id="overlayGana">
   <div class="confetti-container" id="confettiContainer"></div>
   <div class="modal"><img src="logo.png" alt="Skretting" class="modal-logo"><div class="modal-emoji">🎉</div><div class="modal-titulo gana">¡Felicitaciones!</div><div class="modal-sub">Encontraste todas las diferencias</div><button class="btn-jugar" onclick="reiniciar()">Jugar de nuevo</button></div>
@@ -299,23 +144,12 @@
 <script>
   const TOTAL=9,TIEMPO_INICIAL=15,VIDAS_INICIAL=3;
   let encontradas=new Set(),vidas=VIDAS_INICIAL,tiempo=TIEMPO_INICIAL,intervalo=null,juegoActivo=true;
-  function syncUI() {
-    // Sincroniza col-info con los valores actuales
-    const c2 = document.getElementById('contadorNum2');
-    const t2 = document.getElementById('cronNum2');
-    if (c2) c2.innerHTML = encontradas.size + '<span>/9</span>';
-    if (t2) {
-      t2.textContent = tiempo;
-      t2.className = 'cron-num' + (tiempo <= 5 ? ' urgente' : '');
-    }
-  }
-
-  function iniciarCronometro(){clearInterval(intervalo);intervalo=setInterval(()=>{if(!juegoActivo)return;tiempo--;const el=document.getElementById('cronNum');el.textContent=tiempo;el.className='cronometro-num'+(tiempo<=5?' urgente':'');syncUI();if(tiempo<=0){clearInterval(intervalo);juegoActivo=false;setTimeout(()=>mostrarOverlay('overlayTiempo'),300);}},1000);}
-  function clickPanel(e,panel){if(!juegoActivo)return;const zona=e.target.closest('.zona');if(!zona){clickError(e);return;}const zonaId=zona.id;if(encontradas.has(zonaId))return;encontradas.add(zonaId);zona.classList.add('encontrada');document.getElementById('contadorNum').innerHTML=encontradas.size+'<span>/9</span>';syncUI();if(encontradas.size===TOTAL){clearInterval(intervalo);juegoActivo=false;setTimeout(()=>{lanzarConfetti();mostrarOverlay('overlayGana');},600);}}
-  function clickError(e){vidas--;if(vidas<3){document.getElementById('vida1').classList.add('perdido');const v1b=document.getElementById('vida1b');if(v1b)v1b.style.opacity='.2';}if(vidas<2){document.getElementById('vida2').classList.add('perdido');const v2b=document.getElementById('vida2b');if(v2b)v2b.style.opacity='.2';}if(vidas<1){document.getElementById('vida3').classList.add('perdido');const v3b=document.getElementById('vida3b');if(v3b)v3b.style.opacity='.2';}const panel=e.currentTarget;const rect=panel.getBoundingClientRect();const rip=document.createElement('div');rip.className='error-ripple';rip.style.left=(e.clientX-rect.left)+'px';rip.style.top=(e.clientY-rect.top)+'px';panel.appendChild(rip);setTimeout(()=>rip.remove(),550);if(vidas<=0){clearInterval(intervalo);juegoActivo=false;setTimeout(()=>mostrarOverlay('overlayVidas'),450);}}
+  function iniciarCronometro(){clearInterval(intervalo);intervalo=setInterval(()=>{if(!juegoActivo)return;tiempo--;const el=document.getElementById('cronNum');el.textContent=tiempo;el.className='cronometro-num'+(tiempo<=5?' urgente':'');if(tiempo<=0){clearInterval(intervalo);juegoActivo=false;setTimeout(()=>mostrarOverlay('overlayTiempo'),300);}},1000);}
+  function clickPanel(e,panel){if(!juegoActivo)return;const zona=e.target.closest('.zona');if(!zona){clickError(e);return;}const zonaId=zona.id;if(encontradas.has(zonaId))return;encontradas.add(zonaId);zona.classList.add('encontrada');document.getElementById('contadorNum').innerHTML=encontradas.size+'<span>/9</span>';if(encontradas.size===TOTAL){clearInterval(intervalo);juegoActivo=false;setTimeout(()=>{lanzarConfetti();mostrarOverlay('overlayGana');},600);}}
+  function clickError(e){vidas--;if(vidas<3)document.getElementById('vida1').classList.add('perdido');if(vidas<2)document.getElementById('vida2').classList.add('perdido');if(vidas<1)document.getElementById('vida3').classList.add('perdido');const panel=e.currentTarget;const rect=panel.getBoundingClientRect();const rip=document.createElement('div');rip.className='error-ripple';rip.style.left=(e.clientX-rect.left)+'px';rip.style.top=(e.clientY-rect.top)+'px';panel.appendChild(rip);setTimeout(()=>rip.remove(),550);if(vidas<=0){clearInterval(intervalo);juegoActivo=false;setTimeout(()=>mostrarOverlay('overlayVidas'),450);}}
   function lanzarConfetti(){const c=document.getElementById('confettiContainer');c.innerHTML='';const col=['#c50e2a','#fff','#f0c040','#4caf50','#2196f3','#ff9800','#e91e63'];for(let i=0;i<90;i++){const p=document.createElement('div');p.className='confetti-piece';p.style.left=Math.random()*100+'vw';p.style.width=(8+Math.random()*14)+'px';p.style.height=(12+Math.random()*22)+'px';p.style.background=col[Math.floor(Math.random()*col.length)];p.style.animationDuration=(1.5+Math.random()*2.5)+'s';p.style.animationDelay=(Math.random()*1.2)+'s';p.style.transform='rotate('+Math.random()*360+'deg)';c.appendChild(p);}}
   function mostrarOverlay(id){document.getElementById(id).classList.add('visible');}
-  function reiniciar(){encontradas.clear();vidas=VIDAS_INICIAL;tiempo=TIEMPO_INICIAL;juegoActivo=true;['overlayGana','overlayTiempo','overlayVidas'].forEach(id=>document.getElementById(id).classList.remove('visible'));document.querySelectorAll('.zona').forEach(z=>z.classList.remove('encontrada'));document.getElementById('contadorNum').innerHTML='0<span>/9</span>';const cn=document.getElementById('cronNum');cn.textContent=15;cn.className='cronometro-num';document.getElementById('vida1').classList.remove('perdido');document.getElementById('vida2').classList.remove('perdido');document.getElementById('vida3').classList.remove('perdido');['vida1b','vida2b','vida3b'].forEach(id=>{const el=document.getElementById(id);if(el)el.style.opacity='1';});document.getElementById('confettiContainer').innerHTML='';syncUI();iniciarCronometro();}
+  function reiniciar(){encontradas.clear();vidas=VIDAS_INICIAL;tiempo=TIEMPO_INICIAL;juegoActivo=true;['overlayGana','overlayTiempo','overlayVidas'].forEach(id=>document.getElementById(id).classList.remove('visible'));document.querySelectorAll('.zona').forEach(z=>z.classList.remove('encontrada'));document.getElementById('contadorNum').innerHTML='0<span>/9</span>';const cn=document.getElementById('cronNum');cn.textContent=15;cn.className='cronometro-num';document.getElementById('vida1').classList.remove('perdido');document.getElementById('vida2').classList.remove('perdido');document.getElementById('vida3').classList.remove('perdido');document.getElementById('confettiContainer').innerHTML='';iniciarCronometro();}
   iniciarCronometro();
 </script>
 </body>
