@@ -185,44 +185,44 @@
       <img class="fondo" src="fondo_IZ_DER.jpg" alt="Imagen A" draggable="false">
 
       <!-- 1I: centro horizontal, 1/4 desde borde superior -->
-      <!-- centro H = 245px, top 1/4 = 945*0.25=236px → left=245-60=185, top=236-40=196 -->
+      <!-- W=57 H=22 originales | centro panel 245px, 1/4 alto=236px -->
       <div class="zona" id="zona-izq-1" data-id="1"
-        style="left:185px; top:196px; width:120px; height:80px;">
+        style="left:216px; top:225px; width:57px; height:22px;">
         <img class="overlay-png" src="1I.png" alt="">
       </div>
 
       <!-- 2I: centro vertical, 1/4 desde margen izquierdo -->
-      <!-- centro V = 472px, left 1/4 = 490*0.25=122px → left=122-40=82, top=472-60=412 -->
+      <!-- W=45 H=78 originales | 1/4 ancho=122px, centro alto=472px -->
       <div class="zona" id="zona-izq-2" data-id="2"
-        style="left:82px; top:412px; width:80px; height:120px;">
+        style="left:99px; top:433px; width:45px; height:78px;">
         <img class="overlay-png" src="2I.png" alt="">
       </div>
 
       <!-- 3I: centro horizontal, 1/4 desde margen derecho -->
-      <!-- centro H = 245px, right 1/4 = 490*0.75=367px → left=367-60=307, top=245-40=205 -->
+      <!-- W=152 H=91 originales | 3/4 ancho=367px, 1/4 alto=236px -->
       <div class="zona" id="zona-izq-3" data-id="3"
-        style="left:307px; top:205px; width:120px; height:80px;">
+        style="left:291px; top:190px; width:152px; height:91px;">
         <img class="overlay-png" src="3I.png" alt="">
       </div>
 
-      <!-- 4I: 20% más abajo del centro vertical, 2/4 desde margen izquierdo -->
-      <!-- Y = 945*0.5 + 945*0.2 = 472+189=661, X = 490*0.5=245 → left=245-60=185, top=661-40=621 -->
+      <!-- 4I: 20% más abajo del centro, 2/4 desde izquierdo -->
+      <!-- W=55 H=49 originales | centro=245px, Y=661px -->
       <div class="zona" id="zona-izq-4" data-id="4"
-        style="left:185px; top:621px; width:120px; height:80px;">
+        style="left:217px; top:636px; width:55px; height:49px;">
         <img class="overlay-png" src="4I.png" alt="">
       </div>
 
-      <!-- 5I: 20% más abajo del centro vertical, 2/4 desde margen derecho -->
-      <!-- Y = 661px, X = 490*0.75=367 → left=367-60=307, top=661-40=621 -->
+      <!-- 5I: 20% más abajo del centro, 2/4 desde derecho -->
+      <!-- W=71 H=62 originales | 3/4 ancho=367px, Y=661px -->
       <div class="zona" id="zona-izq-5" data-id="5"
-        style="left:307px; top:621px; width:120px; height:80px;">
+        style="left:331px; top:630px; width:71px; height:62px;">
         <img class="overlay-png" src="5I.png" alt="">
       </div>
 
       <!-- 6I: centro horizontal, pegado al margen inferior -->
-      <!-- X = 245px, Y = 945-80=865 → left=185, top=865 -->
+      <!-- W=151 H=115 originales | centro=245px, bottom=945px -->
       <div class="zona" id="zona-izq-6" data-id="6"
-        style="left:185px; top:845px; width:150px; height:80px;">
+        style="left:169px; top:820px; width:151px; height:115px;">
         <img class="overlay-png" src="6I.png" alt="">
       </div>
     </div>
@@ -231,24 +231,21 @@
     <div class="panel" id="panelDer" onclick="clickPanel(event,'der')">
       <img class="fondo" src="fondo_IZ_DER.jpg" alt="Imagen B" draggable="false">
 
-      <!-- 7 (1D): 0.5/3 desde izq, 30% desde arriba -->
-      <!-- X = 490*(0.5/3)=81px, Y = 945*0.30=283px → left=81-40=41, top=283-40=243 -->
+      <!-- 7 (1D): W=45 H=78 originales | 0.5/3 desde izq=81px, 30% desde arriba=283px -->
       <div class="zona" id="zona-der-7" data-id="7"
-        style="left:41px; top:243px; width:80px; height:80px;">
+        style="left:58px; top:244px; width:45px; height:78px;">
         <img class="overlay-png" src="1D.png" alt="">
       </div>
 
-      <!-- 8 (2D): 40% desde abajo, 3% desde izquierdo -->
-      <!-- Y = 945*(1-0.40)=567px, X = 490*0.03=14px → left=14, top=567-40=527 -->
+      <!-- 8 (2D): W=45 H=78 originales | 3% desde izq=14px, 40% desde abajo=567px -->
       <div class="zona" id="zona-der-8" data-id="8"
-        style="left:14px; top:527px; width:80px; height:80px;">
+        style="left:14px; top:489px; width:45px; height:78px;">
         <img class="overlay-png" src="2D.png" alt="">
       </div>
 
-      <!-- 9 (3D): 60% desde borde superior, 10% desde izquierdo -->
-      <!-- Y = 945*0.60=567px, X = 490*0.10=49px → left=49, top=567-40=527 -->
+      <!-- 9 (3D): W=157 H=65 originales | 10% desde izq=49px, 60% desde arriba=567px -->
       <div class="zona" id="zona-der-9" data-id="9"
-        style="left:49px; top:527px; width:120px; height:80px;">
+        style="left:49px; top:534px; width:157px; height:65px;">
         <img class="overlay-png" src="3D.png" alt="">
       </div>
     </div>
