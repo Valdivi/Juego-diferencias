@@ -170,6 +170,7 @@
       <div class="vidas-iconos">
         <span class="corazon" id="vida1">❤️</span>
         <span class="corazon" id="vida2">❤️</span>
+        <span class="corazon" id="vida3">❤️</span>
       </div>
     </div>
   </div>
@@ -183,39 +184,45 @@
     <div class="panel" id="panelIzq" onclick="clickPanel(event,'izq')">
       <img class="fondo" src="fondo_IZ_DER.jpg" alt="Imagen A" draggable="false">
 
-      <!-- 1I: centro X=65 Y=23 — logo Skretting arriba -->
+      <!-- 1I: centro horizontal, 1/4 desde borde superior -->
+      <!-- centro H = 245px, top 1/4 = 945*0.25=236px → left=245-60=185, top=236-40=196 -->
       <div class="zona" id="zona-izq-1" data-id="1"
-        style="left:25px; top:5px; width:80px; height:40px;">
+        style="left:185px; top:196px; width:120px; height:80px;">
         <img class="overlay-png" src="1I.png" alt="">
       </div>
 
-      <!-- 2I: centro X=52 Y=73 — bandera azul -->
+      <!-- 2I: centro vertical, 1/4 desde margen izquierdo -->
+      <!-- centro V = 472px, left 1/4 = 490*0.25=122px → left=122-40=82, top=472-60=412 -->
       <div class="zona" id="zona-izq-2" data-id="2"
-        style="left:20px; top:40px; width:65px; height:70px;">
+        style="left:82px; top:412px; width:80px; height:120px;">
         <img class="overlay-png" src="2I.png" alt="">
       </div>
 
-      <!-- 3I: centro X=154 Y=87 — cilindros rojos -->
+      <!-- 3I: centro horizontal, 1/4 desde margen derecho -->
+      <!-- centro H = 245px, right 1/4 = 490*0.75=367px → left=367-60=307, top=245-40=205 -->
       <div class="zona" id="zona-izq-3" data-id="3"
-        style="left:100px; top:50px; width:110px; height:80px;">
+        style="left:307px; top:205px; width:120px; height:80px;">
         <img class="overlay-png" src="3I.png" alt="">
       </div>
 
-      <!-- 4I: centro X=88 Y=345 — cartel Optiline -->
+      <!-- 4I: 20% más abajo del centro vertical, 2/4 desde margen izquierdo -->
+      <!-- Y = 945*0.5 + 945*0.2 = 472+189=661, X = 490*0.5=245 → left=245-60=185, top=661-40=621 -->
       <div class="zona" id="zona-izq-4" data-id="4"
-        style="left:40px; top:310px; width:100px; height:70px;">
+        style="left:185px; top:621px; width:120px; height:80px;">
         <img class="overlay-png" src="4I.png" alt="">
       </div>
 
-      <!-- 5I: centro X=140 Y=613 — sacos blancos -->
+      <!-- 5I: 20% más abajo del centro vertical, 2/4 desde margen derecho -->
+      <!-- Y = 661px, X = 490*0.75=367 → left=367-60=307, top=661-40=621 -->
       <div class="zona" id="zona-izq-5" data-id="5"
-        style="left:85px; top:575px; width:120px; height:80px;">
+        style="left:307px; top:621px; width:120px; height:80px;">
         <img class="overlay-png" src="5I.png" alt="">
       </div>
 
-      <!-- 6I: pendiente coordenada real -->
+      <!-- 6I: centro horizontal, pegado al margen inferior -->
+      <!-- X = 245px, Y = 945-80=865 → left=185, top=865 -->
       <div class="zona" id="zona-izq-6" data-id="6"
-        style="left:76px; top:750px; width:151px; height:100px;">
+        style="left:185px; top:845px; width:150px; height:80px;">
         <img class="overlay-png" src="6I.png" alt="">
       </div>
     </div>
@@ -224,21 +231,24 @@
     <div class="panel" id="panelDer" onclick="clickPanel(event,'der')">
       <img class="fondo" src="fondo_IZ_DER.jpg" alt="Imagen B" draggable="false">
 
-      <!-- 7: centro X=44 Y=89 — diferencia derecha 1 -->
+      <!-- 7 (1D): 0.5/3 desde izq, 30% desde arriba -->
+      <!-- X = 490*(0.5/3)=81px, Y = 945*0.30=283px → left=81-40=41, top=283-40=243 -->
       <div class="zona" id="zona-der-7" data-id="7"
-        style="left:14px; top:55px; width:65px; height:70px;">
+        style="left:41px; top:243px; width:80px; height:80px;">
         <img class="overlay-png" src="1D.png" alt="">
       </div>
 
-      <!-- 8: centro X=48 Y=268 — diferencia derecha 2 -->
+      <!-- 8 (2D): 40% desde abajo, 3% desde izquierdo -->
+      <!-- Y = 945*(1-0.40)=567px, X = 490*0.03=14px → left=14, top=567-40=527 -->
       <div class="zona" id="zona-der-8" data-id="8"
-        style="left:18px; top:235px; width:65px; height:70px;">
+        style="left:14px; top:527px; width:80px; height:80px;">
         <img class="overlay-png" src="2D.png" alt="">
       </div>
 
-      <!-- 9: diferencia derecha 3 — ajustar coordenada cuando hagas click -->
+      <!-- 9 (3D): 60% desde borde superior, 10% desde izquierdo -->
+      <!-- Y = 945*0.60=567px, X = 490*0.10=49px → left=49, top=567-40=527 -->
       <div class="zona" id="zona-der-9" data-id="9"
-        style="left:78px; top:320px; width:157px; height:65px;">
+        style="left:49px; top:527px; width:120px; height:80px;">
         <img class="overlay-png" src="3D.png" alt="">
       </div>
     </div>
@@ -285,7 +295,7 @@
 </div>
 
 <script>
-  const TOTAL=9, TIEMPO_INICIAL=15, VIDAS_INICIAL=2;
+  const TOTAL=9, TIEMPO_INICIAL=15, VIDAS_INICIAL=3;
   let encontradas=new Set(), vidas=VIDAS_INICIAL, tiempo=TIEMPO_INICIAL;
   let intervalo=null, juegoActivo=true;
 
@@ -321,8 +331,9 @@
 
   function clickError(e){
     vidas--;
-    if(vidas<2) document.getElementById('vida1').classList.add('perdido');
-    if(vidas<1) document.getElementById('vida2').classList.add('perdido');
+    if(vidas<3) document.getElementById('vida1').classList.add('perdido');
+    if(vidas<2) document.getElementById('vida2').classList.add('perdido');
+    if(vidas<1) document.getElementById('vida3').classList.add('perdido');
     const panel=e.currentTarget;
     const rect=panel.getBoundingClientRect();
     const rip=document.createElement('div');
@@ -367,6 +378,7 @@
     cn.textContent=15; cn.className='cronometro-num';
     document.getElementById('vida1').classList.remove('perdido');
     document.getElementById('vida2').classList.remove('perdido');
+    document.getElementById('vida3').classList.remove('perdido');
     document.getElementById('confettiContainer').innerHTML='';
     iniciarCronometro();
   }
