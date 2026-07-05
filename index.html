@@ -107,11 +107,11 @@
     .modal-logo { height:clamp(40px, 9vw, 72px); }
   }
 
-  /* ── COMPUTADORA (≥1080px, no tótem) ── */
-  @media (min-width:1080px) and (max-width:1919px) {
+  /* ── COMPUTADORA: ancho ≥1080px Y landscape (más ancha que alta) ── */
+  @media (min-width:1080px) and (orientation:landscape) {
     body { width:100vw; flex-direction:row; align-items:stretch; min-height:100vh; overflow:hidden; }
 
-    /* Columna izquierda */
+    /* Columna izquierda fija */
     .col-info {
       display:flex; flex-direction:column;
       align-items:center; justify-content:center;
@@ -140,28 +140,32 @@
     .col-info .logo-c { width:140px; }
     .col-info .divider { width:60%; height:2px; background:var(--gris); border-radius:2px; }
 
-    /* Columna derecha: ocupa todo el alto sin scroll */
+    /* Columna derecha */
     .col-juego {
       margin-left:300px;
       width:calc(100vw - 300px);
       height:100vh;
       overflow:hidden;
       display:flex;
-      flex-direction:column;
       align-items:center;
       justify-content:center;
       padding:16px;
     }
 
-    /* Ocultar header, barra y footer en compu */
+    /* Ocultar header, barra y footer */
     .header { display:none; }
     .barra-wrap { display:none; }
     .footer { display:none; }
 
-    /* Juego ocupa todo el espacio disponible */
-    .juego-contenedor { padding:0; width:100%; height:100%; }
-    .juego-inner { width:100%; height:100%; }
-    .panel { flex:1; width:auto; height:100%; aspect-ratio:unset; }
+    /* Juego: las dos tarjetas juntas centradas, respetan proporción */
+    .juego-contenedor { padding:0; width:100%; height:100%; display:flex; align-items:center; justify-content:center; }
+    .juego-inner { width:auto; height:100%; max-height:calc(100vh - 32px); }
+    .panel {
+      flex:none;
+      width:auto;
+      height:100%;
+      aspect-ratio:490/945;
+    }
   }
 </style>
 </head>
