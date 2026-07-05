@@ -74,7 +74,16 @@
   /* col-info oculta por defecto (solo compu) */
   .col-info { display:none; }
 
-  @keyframes pulso-ok { 0%{transform:scale(1)} 50%{transform:scale(1.07)} 100%{transform:scale(1)} }
+  /* ── MÓVIL (≤600px): ajuste fino zona 1I ── */
+  @media (max-width:600px) {
+    #zona-izq-1 {
+      height:2.8% !important;
+      top:20.5% !important;
+    }
+    .juego-contenedor { padding:8px 4px 0; }
+    .juego-inner { gap:3px; padding:3px; width:calc(100% - 8px); }
+    .panel { width:50%; }
+  }
   @keyframes ripple { to{transform:translate(-50%,-50%) scale(3.5);opacity:0} }
   @keyframes caer { to{top:110vh;transform:rotate(720deg)} }
   @keyframes latido { 0%,100%{transform:scale(1)} 50%{transform:scale(1.18)} }
@@ -94,7 +103,7 @@
     .stat-valor { font-size:clamp(28px, 6vw, 52px); }
     .corazon { font-size:clamp(24px, 5vw, 44px); }
     .juego-contenedor { padding:8px 4px 0; }
-    .juego-inner { flex-direction:row; gap:4px; padding:4px; width:100%; }
+    .juego-inner { flex-direction:row; gap:3px; padding:3px; width:calc(100% - 8px); margin:0 auto; }
     .panel { width:50%; height:auto; aspect-ratio:490/945; flex-shrink:1; }
     .footer { padding:40px 0 50px; margin-top:20px; }
     .footer img { height:clamp(60px, 12vw, 120px); }
