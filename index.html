@@ -54,7 +54,7 @@
   .corazon.perdido { filter:grayscale(1); opacity:.25; }
 
   /* JUEGO */
-  .juego-contenedor { width:100%; padding:24px 20px 0; display:flex; justify-content:center; }
+  .juego-contenedor { width:100%; padding:80px 20px 0; display:flex; justify-content:center; }
   .juego-inner {
     display:flex; gap:8px;
     background:var(--blanco); border-radius:16px; padding:10px;
@@ -108,9 +108,9 @@
   /* FOOTER */
   .footer {
     width:100%; display:flex; justify-content:center;
-    padding:36px 0 48px; margin-top:24px;
+    padding:80px 0 100px; margin-top:40px;
   }
-  .footer img { height:80px; }
+  .footer img { height:160px; }
 
   /* OVERLAYS */
   .overlay {
@@ -184,43 +184,37 @@
     <div class="panel" id="panelIzq" onclick="clickPanel(event,'izq')">
       <img class="fondo" src="fondo_IZ_DER.jpg" alt="Imagen A" draggable="false">
 
-      <!-- 1I: centro horizontal, 1/4 desde borde superior -->
-      <!-- W=57 H=22 originales | centro panel 245px, 1/4 alto=236px -->
+      <!-- 1I: subir 25% del alto=236px → top:225-236=-11 → top:5 -->
       <div class="zona" id="zona-izq-1" data-id="1"
-        style="left:216px; top:225px; width:57px; height:22px;">
+        style="left:216px; top:5px; width:57px; height:22px;">
         <img class="overlay-png" src="1I.png" alt="">
       </div>
 
-      <!-- 2I: centro vertical, 1/4 desde margen izquierdo -->
-      <!-- W=45 H=78 originales | 1/4 ancho=122px, centro alto=472px -->
+      <!-- 2I: izq 3%=14px → left:85 | subir 3%=28px → top:405 -->
       <div class="zona" id="zona-izq-2" data-id="2"
-        style="left:99px; top:433px; width:45px; height:78px;">
+        style="left:85px; top:405px; width:45px; height:78px;">
         <img class="overlay-png" src="2I.png" alt="">
       </div>
 
-      <!-- 3I: centro horizontal, 1/4 desde margen derecho -->
-      <!-- W=152 H=91 originales | 3/4 ancho=367px, 1/4 alto=236px -->
+      <!-- 3I: bajar 40%=378px → top:568 -->
       <div class="zona" id="zona-izq-3" data-id="3"
-        style="left:291px; top:190px; width:152px; height:91px;">
+        style="left:291px; top:568px; width:152px; height:91px;">
         <img class="overlay-png" src="3I.png" alt="">
       </div>
 
-      <!-- 4I: 20% más abajo del centro, 2/4 desde izquierdo -->
-      <!-- W=55 H=49 originales | centro=245px, Y=661px -->
+      <!-- 4I: izq 50%=245px → left:-27 → left:0 | subir 30%=283px → top:353 -->
       <div class="zona" id="zona-izq-4" data-id="4"
-        style="left:217px; top:636px; width:55px; height:49px;">
+        style="left:0px; top:353px; width:55px; height:49px;">
         <img class="overlay-png" src="4I.png" alt="">
       </div>
 
-      <!-- 5I: 20% más abajo del centro, 2/4 desde derecho -->
-      <!-- W=71 H=62 originales | 3/4 ancho=367px, Y=661px -->
+      <!-- 5I: sin cambios -->
       <div class="zona" id="zona-izq-5" data-id="5"
         style="left:331px; top:630px; width:71px; height:62px;">
         <img class="overlay-png" src="5I.png" alt="">
       </div>
 
-      <!-- 6I: centro horizontal, pegado al margen inferior -->
-      <!-- W=151 H=115 originales | centro=245px, bottom=945px -->
+      <!-- 6I: sin cambios -->
       <div class="zona" id="zona-izq-6" data-id="6"
         style="left:169px; top:820px; width:151px; height:115px;">
         <img class="overlay-png" src="6I.png" alt="">
@@ -231,21 +225,21 @@
     <div class="panel" id="panelDer" onclick="clickPanel(event,'der')">
       <img class="fondo" src="fondo_IZ_DER.jpg" alt="Imagen B" draggable="false">
 
-      <!-- 7 (1D): W=45 H=78 originales | 0.5/3 desde izq=81px, 30% desde arriba=283px -->
+      <!-- 7 (1D): bajar 7%=66px → top:310 -->
       <div class="zona" id="zona-der-7" data-id="7"
-        style="left:58px; top:244px; width:45px; height:78px;">
+        style="left:58px; top:310px; width:45px; height:78px;">
         <img class="overlay-png" src="1D.png" alt="">
       </div>
 
-      <!-- 8 (2D): W=45 H=78 originales | 3% desde izq=14px, 40% desde abajo=567px -->
+      <!-- 8 (2D): bajar 2%=18px → top:507 | der 2%=9px → left:23 -->
       <div class="zona" id="zona-der-8" data-id="8"
-        style="left:14px; top:489px; width:45px; height:78px;">
+        style="left:23px; top:507px; width:45px; height:78px;">
         <img class="overlay-png" src="2D.png" alt="">
       </div>
 
-      <!-- 9 (3D): W=157 H=65 originales | 10% desde izq=49px, 60% desde arriba=567px -->
+      <!-- 9 (3D): subir 10%=94px → top:440 | der 70%=343px → left:392 -->
       <div class="zona" id="zona-der-9" data-id="9"
-        style="left:49px; top:534px; width:157px; height:65px;">
+        style="left:392px; top:440px; width:157px; height:65px;">
         <img class="overlay-png" src="3D.png" alt="">
       </div>
     </div>
