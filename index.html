@@ -34,8 +34,24 @@
   }
 
   /* Header */
-  .header { width:100%; padding:24px 20px 20px; text-align:center; position:relative; }
-  .titulo { font-size:52px; font-weight:900; text-transform:uppercase; line-height:1.1; color:var(--blanco); text-align:center; width:100%; position:relative; z-index:1; }
+  .header {
+    width:100%;
+    padding:24px 20px 20px;
+    position:relative;
+    display:block;
+  }
+  .titulo {
+    font-size:52px;
+    font-weight:900;
+    text-transform:uppercase;
+    line-height:1.1;
+    color:var(--blanco);
+    display:block;
+    width:100%;
+    text-align:center;
+    margin:0 auto;
+    padding:0;
+  }
   .titulo span { color:var(--blanco); }
 
   /* Barra blanca */
@@ -356,7 +372,7 @@
 <!-- COLUMNA DERECHA / CONTENIDO PRINCIPAL -->
 <div class="col-juego">
   <div class="header">
-    <div class="titulo">Encuentra las<br><span>9 Diferencias</span></div>
+    <div class="titulo"><div>Encuentra las</div><div><span>9 Diferencias</span></div></div>
   </div>
   <div class="barra-wrap">
     <div class="barra">
