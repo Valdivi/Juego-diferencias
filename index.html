@@ -153,7 +153,7 @@
   @keyframes latido { 0%,100%{transform:scale(1)} 50%{transform:scale(1.18)} }
 
   /* ══════════════════════════════
-     MÓVIL (≤600px)
+     MÓVIL (≤600px) — inicio compacto
   ══════════════════════════════ */
   @media (max-width:600px) {
     #zona-izq-1 { height:2.8% !important; top:20.5% !important; }
@@ -161,6 +161,14 @@
     .juego-inner { gap:3px; padding:3px; width:calc(100% - 8px); }
     .panel { width:50%; }
     .logo-esquina { width:90px; }
+    /* Pantalla inicio compacta en móvil */
+    .pantalla-inicio { gap:16px; padding:24px 20px; }
+    .pantalla-inicio img.logo-inicio { width:160px; margin-bottom:4px; }
+    .inicio-titulo { font-size:clamp(24px,7vw,36px); }
+    .inicio-sub { font-size:clamp(13px,3.5vw,16px); }
+    .form-leads { gap:10px; }
+    .form-leads input { padding:12px 16px; font-size:14px; }
+    .btn-inicio { padding:14px 48px; font-size:18px; margin-top:4px; }
   }
 
   /* ══════════════════════════════
@@ -168,17 +176,24 @@
   ══════════════════════════════ */
   @media (max-width:1079px) {
     body { width:100%; }
-    .header { padding:20px 16px 12px; }
-    .titulo { font-size:clamp(28px,6vw,56px); }
-    .barra { height:clamp(60px,10vw,100px); padding:0 16px; }
-    .barra-wrap { margin-top:8px; }
-    .cronometro { width:clamp(70px,13vw,128px); height:clamp(70px,13vw,128px); }
-    .cronometro-num { font-size:clamp(28px,6vw,50px); }
-    .cronometro-label { font-size:clamp(10px,2vw,14px); }
-    .cronometro-wrap { top:clamp(-22px,-3.5vw,-32px); }
-    .stat-label { font-size:clamp(10px,2vw,16px); letter-spacing:1px; }
-    .stat-valor { font-size:clamp(28px,6vw,52px); }
-    .corazon { font-size:clamp(24px,5vw,44px); }
+    /* Logo esquina FIJO — no se mueve al hacer scroll */
+    .logo-esquina {
+      position:fixed; top:0; right:0;
+      width:clamp(80px,15vw,120px);
+      z-index:50;
+    }
+    /* Header con padding para que no tape el logo */
+    .header { padding:12px 16px 8px; padding-right:clamp(90px,17vw,140px); }
+    .titulo { font-size:clamp(20px,4.5vw,40px); }
+    .barra { height:clamp(50px,9vw,90px); padding:0 12px; }
+    .barra-wrap { margin-top:4px; }
+    .cronometro { width:clamp(58px,11vw,100px); height:clamp(58px,11vw,100px); }
+    .cronometro-num { font-size:clamp(22px,5vw,42px); }
+    .cronometro-label { font-size:clamp(8px,1.5vw,12px); }
+    .cronometro-wrap { top:clamp(-18px,-3vw,-28px); }
+    .stat-label { font-size:clamp(8px,1.6vw,13px); letter-spacing:1px; }
+    .stat-valor { font-size:clamp(22px,5vw,44px); }
+    .corazon { font-size:clamp(20px,4vw,36px); }
     .juego-contenedor { padding:8px 4px 0; }
     .juego-inner { flex-direction:row; gap:3px; padding:3px; width:calc(100% - 8px); margin:0 auto; }
     .panel { width:50%; height:auto; aspect-ratio:490/945; flex-shrink:1; }
@@ -191,7 +206,52 @@
     .btn-jugar { padding:16px 40px; font-size:clamp(18px,4vw,28px); }
     .modal-emoji { font-size:clamp(60px,14vw,96px); }
     .modal-logo { height:clamp(40px,9vw,72px); }
-    .logo-esquina { width:clamp(80px,18vw,140px); }
+  }
+
+  /* ══════════════════════════════
+     TÓTEM 1080px portrait — pantalla inicio más grande
+  ══════════════════════════════ */
+  @media (min-width:1080px) and (orientation:portrait) {
+    .logo-esquina { width:216px; position:fixed; top:0; right:0; }
+    .pantalla-inicio { gap:48px; padding:60px; }
+    .pantalla-inicio img.logo-inicio { width:320px; }
+    .inicio-titulo { font-size:100px; }
+    .inicio-sub { font-size:32px; }
+    .form-leads { max-width:560px; gap:20px; }
+    .form-leads input { padding:22px 28px; font-size:26px; }
+    .btn-inicio { padding:28px 100px; font-size:40px; }
+    /* Juego: espacio bajo el logo */
+    .header { padding-top:230px; padding-right:240px; }
+    .titulo { font-size:60px; }
+    .barra { height:120px; }
+    .cronometro { width:150px; height:150px; }
+    .cronometro-num { font-size:58px; }
+    .cronometro-wrap { top:-40px; }
+    .stat-label { font-size:18px; }
+    .stat-valor { font-size:60px; }
+    .corazon { font-size:52px; }
+    .juego-contenedor { padding:40px 24px 0; }
+  }
+
+  /* ══════════════════════════════
+     TABLET (601px–1079px) — logo fijo, letras más pequeñas
+  ══════════════════════════════ */
+  @media (min-width:601px) and (max-width:1079px) {
+    .logo-esquina {
+      position:fixed; top:0; right:0;
+      width:clamp(100px,14vw,140px);
+      z-index:50;
+    }
+    .header { padding-top:10px; padding-right:clamp(110px,16vw,155px); padding-left:16px; padding-bottom:6px; }
+    .titulo { font-size:clamp(16px,3.2vw,28px); }
+    .barra { height:clamp(44px,7vw,70px); padding:0 12px; }
+    .cronometro { width:clamp(50px,8.5vw,80px); height:clamp(50px,8.5vw,80px); }
+    .cronometro-num { font-size:clamp(18px,3.8vw,34px); }
+    .cronometro-label { font-size:clamp(7px,1.2vw,10px); }
+    .cronometro-wrap { top:clamp(-15px,-2.5vw,-24px); }
+    .stat-label { font-size:clamp(7px,1.3vw,11px); }
+    .stat-valor { font-size:clamp(18px,3.8vw,34px); }
+    .corazon { font-size:clamp(16px,3.2vw,28px); }
   }
 
   /* ══════════════════════════════
@@ -203,7 +263,7 @@
 
     .col-info {
       display:flex; flex-direction:column;
-      align-items:center; justify-content:center;
+      align-items:center; justify-content:space-between;
       width:300px; height:100vh;
       background:var(--azul);
       padding:32px 24px; gap:24px;
@@ -212,6 +272,7 @@
       z-index:10; flex-shrink:0; overflow:hidden;
     }
     .col-info .logo-lateral { width:150px; margin-bottom:8px; }
+    .col-info .logo-esquina-col { width:180px; margin-top:auto; }
     .col-info .titulo-col { font-size:24px; font-weight:900; text-transform:uppercase; line-height:1.2; color:var(--blanco); text-align:center; }
     .col-info .titulo-col span { color:rgba(255,255,255,.8); font-size:.85em; display:block; font-weight:700; }
     .col-info .divider { width:60%; height:2px; background:rgba(255,255,255,.2); border-radius:2px; }
@@ -289,6 +350,7 @@
       <span id="vida3b">❤️</span>
     </div>
   </div>
+  <img class="logo-esquina-col" src="logoesquina.png" alt="Optiline">
 </div>
 
 <!-- COLUMNA DERECHA / CONTENIDO PRINCIPAL -->
@@ -395,12 +457,26 @@
     msg.classList.remove('visible');
 
     let ok = true;
-    if(!nombre)   { document.getElementById('leadNombre').classList.add('error'); ok=false; }
-    if(!telefono) { document.getElementById('leadTelefono').classList.add('error'); ok=false; }
-    if(!email || !email.includes('@')) { document.getElementById('leadEmail').classList.add('error'); ok=false; }
+    let msgTxt = '';
+
+    if(!nombre) { document.getElementById('leadNombre').classList.add('error'); ok=false; }
+
+    const soloDigitos = telefono.replace(/\D/g,'');
+    if(!telefono || soloDigitos.length !== 10) {
+      document.getElementById('leadTelefono').classList.add('error'); ok=false;
+      msgTxt = 'El teléfono debe tener exactamente 10 dígitos';
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if(!email || !emailRegex.test(email)) {
+      document.getElementById('leadEmail').classList.add('error'); ok=false;
+      if(!msgTxt) msgTxt = 'Ingresa un correo electrónico válido';
+    }
+
+    if(!nombre && !msgTxt) msgTxt = 'Por favor completa todos los campos correctamente';
 
     if(!ok) {
-      msg.textContent = 'Por favor completa todos los campos correctamente';
+      msg.textContent = msgTxt || 'Por favor completa todos los campos correctamente';
       msg.classList.add('visible');
       return;
     }
