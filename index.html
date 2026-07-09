@@ -26,33 +26,33 @@
     position:relative;
   }
 
-  /* Logo esquina superior derecha */
-  .logo-esquina {
-    position:fixed; top:0; right:0; z-index:50;
-    width:180px;
-    pointer-events:none;
-  }
-
   /* Header */
   .header {
     width:100%;
-    padding:24px 20px 20px;
+    padding:20px 16px 16px;
     position:relative;
-    display:block;
+    text-align:center;
   }
+  .header-logo {
+    position:absolute;
+    top:0; right:0;
+    width:160px;
+    z-index:5;
+  }
+  .header-left { display:none; }
   .titulo {
     font-size:52px;
     font-weight:900;
     text-transform:uppercase;
     line-height:1.1;
     color:var(--blanco);
+    text-align:center;
     display:block;
     width:100%;
-    text-align:center;
-    margin:0 auto;
-    padding:0;
+    padding-top:clamp(100px,18vw,200px);
   }
   .titulo span { color:var(--blanco); }
+  .logo-esquina { display:none; }
 
   /* Barra blanca */
   .barra-wrap { width:100%; position:relative; margin-top:32px; }
@@ -192,17 +192,17 @@
   ══════════════════════════════ */
   @media (max-width:1079px) {
     body { width:100%; }
-    /* Logo esquina FIJO — no se mueve al hacer scroll */
+    /* Logo esquina FIJO */
     .logo-esquina {
       position:fixed; top:0; right:0;
       width:clamp(80px,15vw,120px);
       z-index:50;
     }
-    /* Header: sin padding-right, el logo está fixed encima y no afecta el centrado */
-    .header { padding:16px 20px 12px; text-align:center; position:relative; }
-    .titulo { font-size:clamp(20px,4.5vw,40px); text-align:center; width:100%; }
+    .header { padding:0 0 10px; }
+    .header-logo { width:clamp(70px,14vw,110px); top:0; right:0; }
+    .titulo { font-size:clamp(18px,4vw,36px); padding-top:clamp(70px,15vw,115px); }
     .barra { height:clamp(50px,9vw,90px); padding:0 12px; }
-    .barra-wrap { margin-top:clamp(16px,3vw,24px); }
+    .barra-wrap { margin-top:clamp(12px,2.5vw,20px); }
     .cronometro { width:clamp(58px,11vw,100px); height:clamp(58px,11vw,100px); }
     .cronometro-num { font-size:clamp(22px,5vw,42px); }
     .cronometro-label { font-size:clamp(8px,1.5vw,12px); }
@@ -228,8 +228,8 @@
      TÓTEM 1080px portrait — pantalla inicio más grande
   ══════════════════════════════ */
   @media (min-width:1080px) and (orientation:portrait) {
-    .logo-esquina { width:216px; position:fixed; top:0; right:0; }
-    .pantalla-inicio { gap:48px; padding:60px; }
+    .header-logo { width:216px; top:0; right:0; }
+    .titulo { font-size:60px; padding-top:220px; }
     .pantalla-inicio img.logo-inicio { width:320px; }
     .inicio-titulo { font-size:100px; }
     .inicio-sub { font-size:32px; }
@@ -372,7 +372,9 @@
 <!-- COLUMNA DERECHA / CONTENIDO PRINCIPAL -->
 <div class="col-juego">
   <div class="header">
+    <div class="header-left"></div>
     <div class="titulo"><div>Encuentra las</div><div><span>9 Diferencias</span></div></div>
+    <img class="header-logo" src="logoesquina.png" alt="Skretting">
   </div>
   <div class="barra-wrap">
     <div class="barra">
