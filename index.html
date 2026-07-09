@@ -85,7 +85,6 @@
   /* Footer */
   .footer { width:100%; display:flex; justify-content:center; align-items:center; padding:80px 0 100px; margin-top:40px; position:relative; background:transparent; }
   .footer img { height:160px; position:relative; z-index:2; }
-  .footer::before { content:''; position:absolute; top:-2px; left:-5%; right:-5%; height:90px; background:transparent; border-top:4px solid var(--rojo); border-radius:50% 50% 0 0 / 90px 90px 0 0; z-index:1; }
 
   /* col-info oculta por defecto */
   .col-info { display:none; }
@@ -378,22 +377,15 @@
 <!-- LOGO ESQUINA (tótem, móvil, tablet) -->
 <img class="logo-esquina" src="logoesquina.png" alt="Skretting">
 
-<!-- PANTALLA DE INICIO CON FORMULARIO -->
+<!-- PANTALLA DE INICIO SIN FORMULARIO -->
 <div class="pantalla-inicio" id="pantallaInicio">
   <img class="logo-inicio" src="logo.png" alt="Skretting">
   <div class="inicio-titulo">
     Encuentra las
     <span>9 Diferencias</span>
   </div>
-  <div class="inicio-sub">Completa tus datos y ¡a jugar!</div>
-
-  <div class="form-leads">
-    <input type="text" id="leadNombre" placeholder="👤 Nombre completo" autocomplete="off">
-    <input type="tel" id="leadTelefono" placeholder="📱 Número de teléfono" autocomplete="off">
-    <input type="email" id="leadEmail" placeholder="✉️ Correo electrónico" autocomplete="off">
-    <div class="form-msg" id="formMsg">Por favor completa todos los campos</div>
-    <button class="btn-inicio" onclick="validarYJugar()">¡Jugar!</button>
-  </div>
+  <div class="inicio-sub">¿Puedes encontrarlas todas antes de que se acabe el tiempo?</div>
+  <button class="btn-inicio" onclick="empezarJuego()">¡Empezar!</button>
 </div>
 
 <!-- COLUMNA IZQUIERDA (solo compu) -->
