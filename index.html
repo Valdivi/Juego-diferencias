@@ -34,8 +34,8 @@
   }
 
   /* Header */
-  .header { width:100%; padding:24px 48px 20px; text-align:center; }
-  .titulo { font-size:52px; font-weight:900; text-transform:uppercase; line-height:1.1; color:var(--blanco); text-align:center; }
+  .header { width:100%; padding:24px 20px 20px; text-align:center; position:relative; }
+  .titulo { font-size:52px; font-weight:900; text-transform:uppercase; line-height:1.1; color:var(--blanco); text-align:center; width:100%; position:relative; z-index:1; }
   .titulo span { color:var(--blanco); }
 
   /* Barra blanca */
@@ -132,14 +132,14 @@
   ══════════════════════════════ */
   .overlay { display:none; position:fixed; inset:0; background:rgba(0,20,60,.90); z-index:200; align-items:center; justify-content:center; }
   .overlay.visible { display:flex; }
-  .modal { background:var(--azul); border-radius:28px; padding:64px 80px; text-align:center; max-width:740px; width:90%; border:3px solid rgba(255,255,255,.2); }
-  .modal-logo { height:72px; margin-bottom:32px; filter:brightness(0) invert(1); }
+  .modal { background:var(--blanco); border-radius:28px; padding:64px 80px; text-align:center; max-width:740px; width:90%; }
+  .modal-logo { height:72px; margin-bottom:32px; }
   .modal-emoji { font-size:96px; line-height:1; margin-bottom:16px; }
   .modal-titulo { font-size:68px; font-weight:900; text-transform:uppercase; line-height:1.05; margin-bottom:16px; }
-  .modal-titulo.gana { color:var(--blanco); }
-  .modal-titulo.pierde { color:var(--blanco); }
-  .modal-sub { font-size:30px; color:rgba(255,255,255,.75); font-weight:600; margin-bottom:44px; }
-  .btn-jugar { background:var(--blanco); color:var(--azul); border:none; border-radius:60px; padding:22px 72px; font-size:30px; font-weight:900; cursor:pointer; font-family:'Montserrat',sans-serif; text-transform:uppercase; letter-spacing:2px; transition:transform .15s; }
+  .modal-titulo.gana { color:var(--azul); }
+  .modal-titulo.pierde { color:var(--rojo); }
+  .modal-sub { font-size:30px; color:#555; font-weight:600; margin-bottom:44px; }
+  .btn-jugar { background:var(--azul); color:var(--blanco); border:none; border-radius:60px; padding:22px 72px; font-size:30px; font-weight:900; cursor:pointer; font-family:'Montserrat',sans-serif; text-transform:uppercase; letter-spacing:2px; transition:transform .15s; }
   .btn-jugar:hover { transform:scale(1.04); }
   .confetti-container { position:fixed; inset:0; pointer-events:none; z-index:199; overflow:hidden; }
   .confetti-piece { position:absolute; top:-20px; border-radius:3px; animation:caer linear forwards; }
@@ -182,9 +182,9 @@
       width:clamp(80px,15vw,120px);
       z-index:50;
     }
-    /* Header con padding para que no tape el logo */
-    .header { padding:16px 16px 12px; padding-right:clamp(90px,17vw,140px); text-align:center; }
-    .titulo { font-size:clamp(20px,4.5vw,40px); text-align:center; }
+    /* Header: sin padding-right, el logo está fixed encima y no afecta el centrado */
+    .header { padding:16px 20px 12px; text-align:center; position:relative; }
+    .titulo { font-size:clamp(20px,4.5vw,40px); text-align:center; width:100%; }
     .barra { height:clamp(50px,9vw,90px); padding:0 12px; }
     .barra-wrap { margin-top:clamp(16px,3vw,24px); }
     .cronometro { width:clamp(58px,11vw,100px); height:clamp(58px,11vw,100px); }
@@ -408,7 +408,7 @@
 <div class="overlay" id="overlayGana">
   <div class="confetti-container" id="confettiContainer"></div>
   <div class="modal">
-    <img src="logo.png" alt="Skretting" class="modal-logo">
+    <img src="logoazul.png" alt="Skretting" class="modal-logo">
     <div class="modal-emoji">🎉</div>
     <div class="modal-titulo gana">¡Felicitaciones!</div>
     <div class="modal-sub">Encontraste todas las diferencias</div>
@@ -422,7 +422,7 @@
     <div class="modal-emoji">⏱️</div>
     <div class="modal-titulo pierde">¡Se agotó<br>el tiempo!</div>
     <div class="modal-sub">Inténtalo de nuevo</div>
-    <img src="logo.png" alt="Skretting" class="modal-logo">
+    <img src="logoazul.png" alt="Skretting" class="modal-logo">
     <button class="btn-jugar" onclick="volverInicio()">Jugar de nuevo</button>
   </div>
 </div>
@@ -433,7 +433,7 @@
     <div class="modal-emoji">💔</div>
     <div class="modal-titulo pierde">¡Agotaste<br>tus intentos!</div>
     <div class="modal-sub">Inténtalo de nuevo</div>
-    <img src="logo.png" alt="Skretting" class="modal-logo">
+    <img src="logoazul.png" alt="Skretting" class="modal-logo">
     <button class="btn-jugar" onclick="volverInicio()">Jugar de nuevo</button>
   </div>
 </div>
@@ -457,26 +457,30 @@
     msg.classList.remove('visible');
 
     let ok = true;
-    let msgTxt = '';
+    let errores = [];
 
-    if(!nombre) { document.getElementById('leadNombre').classList.add('error'); ok=false; }
+    if(!nombre) {
+      document.getElementById('leadNombre').classList.add('error');
+      errores.push('nombre completo');
+      ok=false;
+    }
 
     const soloDigitos = telefono.replace(/\D/g,'');
     if(!telefono || soloDigitos.length !== 10) {
-      document.getElementById('leadTelefono').classList.add('error'); ok=false;
-      msgTxt = 'El teléfono debe tener exactamente 10 dígitos';
+      document.getElementById('leadTelefono').classList.add('error');
+      errores.push('teléfono de 10 dígitos');
+      ok=false;
     }
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if(!email || !emailRegex.test(email)) {
-      document.getElementById('leadEmail').classList.add('error'); ok=false;
-      if(!msgTxt) msgTxt = 'Ingresa un correo electrónico válido';
+      document.getElementById('leadEmail').classList.add('error');
+      errores.push('correo electrónico válido');
+      ok=false;
     }
 
-    if(!nombre && !msgTxt) msgTxt = 'Por favor completa todos los campos correctamente';
-
     if(!ok) {
-      msg.textContent = msgTxt || 'Por favor completa todos los campos correctamente';
+      msg.textContent = 'Falta: ' + errores.join(', ');
       msg.classList.add('visible');
       return;
     }
