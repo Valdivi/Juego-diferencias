@@ -229,21 +229,21 @@
   ══════════════════════════════ */
   @media (min-width:1080px) and (orientation:portrait) {
     body {
-      width:1080px;
-      height:1920px;
+      width:2160px;
+      height:3840px;
       overflow:hidden;
       display:flex;
       flex-direction:column;
     }
 
-    /* Logo pegado esquina superior derecha */
+    /* Logo +20% → 264px, pegado esquina */
     .header-logo {
       position:absolute;
       top:0; right:0;
-      width:220px;
+      width:264px;
     }
 
-    /* Header: solo el título centrado, logo encima fuera del flujo */
+    /* Título baja proporcional al logo (+20% = 216px → 264px, diferencia 44px más abajo) */
     .header {
       position:relative;
       padding:24px 0 0;
@@ -251,27 +251,33 @@
       flex-shrink:0;
     }
     .titulo {
-      font-size:64px;
+      font-size:128px;
       text-align:center;
       width:100%;
       padding:0;
-      margin-top:180px; /* baja el título debajo del logo */
+      margin-top:222px; /* 180 * 1.2 = 216, redondeado + margen extra */
     }
 
-    /* Barra */
-    .barra-wrap { flex-shrink:0; margin-top:24px; }
-    .barra { height:110px; }
-    .cronometro { width:140px; height:140px; }
-    .cronometro-num { font-size:56px; }
-    .cronometro-wrap { top:-36px; }
-    .stat-label { font-size:17px; }
-    .stat-valor { font-size:56px; }
-    .corazon { font-size:48px; }
+    /* Barra — todo x2 para 4K */
+    .barra-wrap { flex-shrink:0; margin-top:48px; }
+    .barra { height:220px; padding:0 120px; }
+    .cronometro { width:280px; height:280px; border-width:10px; }
+    .cronometro-num { font-size:112px; }
+    .cronometro-label { font-size:28px; }
+    .cronometro-wrap { top:-72px; }
+    .stat-label { font-size:34px; letter-spacing:4px; }
+    .stat-valor { font-size:112px; }
+    .corazon { font-size:96px; gap:16px; }
+    .vidas-iconos { gap:16px; }
+
+    /* Barra altura y border */
+    .barra { border-radius:0; }
+    .cronometro { border:10px solid var(--azul); }
 
     /* Juego ocupa el espacio restante */
     .juego-contenedor {
       flex:1;
-      padding:20px 16px 0;
+      padding:40px 32px 0;
       display:flex;
       align-items:flex-start;
       justify-content:center;
@@ -280,6 +286,9 @@
     .juego-inner {
       width:100%;
       height:100%;
+      gap:16px;
+      padding:20px;
+      border-radius:32px;
     }
     .panel {
       flex:1;
@@ -287,20 +296,29 @@
       width:auto;
       aspect-ratio:unset;
     }
+    .zona { border-width:6px; border-radius:16px; }
+    .zona.encontrada { border-width:6px !important; }
+    .zona.encontrada::after { font-size:56px; }
+    .error-ripple { width:112px; height:112px; }
 
     /* Footer compacto */
     .footer { flex-shrink:0; padding:80px 0 60px; margin-top:40px; }
-    .footer img { height:130px; }
-    .footer::before { height:50px; }
+    .footer img { height:260px; }
 
-    /* Pantalla inicio tótem */
-    .pantalla-inicio { gap:48px; padding:60px; }
-    .pantalla-inicio img.logo-inicio { width:320px; }
-    .inicio-titulo { font-size:100px; }
-    .inicio-sub { font-size:32px; }
-    .form-leads { max-width:560px; gap:20px; }
-    .form-leads input { padding:22px 28px; font-size:26px; }
-    .btn-inicio { padding:28px 100px; font-size:40px; }
+    /* Pantalla inicio tótem 4K */
+    .pantalla-inicio { gap:80px; padding:120px; }
+    .pantalla-inicio img.logo-inicio { width:640px; }
+    .inicio-titulo { font-size:200px; }
+    .inicio-sub { font-size:64px; }
+    .btn-inicio { padding:56px 200px; font-size:80px; border-radius:120px; }
+
+    /* Overlays 4K */
+    .modal { max-width:1480px; padding:128px 160px; border-radius:56px; }
+    .modal-logo { height:144px; margin-bottom:64px; }
+    .modal-emoji { font-size:192px; }
+    .modal-titulo { font-size:136px; }
+    .modal-sub { font-size:60px; margin-bottom:88px; }
+    .btn-jugar { padding:44px 144px; font-size:60px; border-radius:120px; }
   }
 
   /* ══════════════════════════════
